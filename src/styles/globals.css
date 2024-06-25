@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -10,6 +9,7 @@
   --highlight-color: #ff6f61;
   --glass-bg: rgba(255, 255, 255, 0.1);
   --glass-border: rgba(255, 255, 255, 0.4);
+  --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 body {
@@ -21,6 +21,14 @@ body {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 15px;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #ff6f61, #ffa726, #42a5f5, #7e57c2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero {
@@ -30,24 +38,6 @@ body {
   height: 100vh;
   padding: 2rem;
   position: relative;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(120deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.2) 100%);
-  animation: gradient 5s ease infinite;
-  z-index: -1;
-}
-
-@keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
 
 .hero-text {
@@ -64,21 +54,6 @@ body {
   font-size: 2.5rem;
   font-weight: 700;
   margin: 1rem 0 0;
-  color: var(--secondary-color);
-}
-
-.gradient-text {
-  background: linear-gradient(90deg, #0000ff, #ff0000, #800080, #ffa500);
-  background-size: 400%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradientAnimation 10s ease infinite;
-}
-
-@keyframes gradientAnimation {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
 
 .quote {
@@ -88,15 +63,15 @@ body {
 }
 
 .quote-text {
-  font-size: 3rem;
+  font-size: 5rem;
   font-weight: 600;
   flex: 1;
 }
 
 .quote-author {
-  font-size: 1.5rem;
+  font-size: 2rem;
   text-align: right;
-  margin-top: 1rem;
+  margin-left: 1rem;
 }
 
 .card-carousel {
@@ -109,12 +84,7 @@ body {
 
 .card-carousel__container {
   display: flex;
-  animation: scroll 40s linear infinite;
-}
-
-@keyframes scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
+  transition: transform 0.5s ease-in-out;
 }
 
 .card-carousel__item {
@@ -124,12 +94,6 @@ body {
   padding: 2rem;
   background-color: var(--glass-bg);
   border-radius: 10px;
-  min-width: 300px;
-}
-
-.card-carousel__item:hover {
-  transform: scale(1.05);
-  transition: transform 0.3s ease;
 }
 
 .review-card {
@@ -138,11 +102,6 @@ body {
   background-color: var(--glass-bg);
   border-radius: 10px;
   border: 1px solid var(--glass-border);
-  transition: transform 0.3s ease;
-}
-
-.review-card:hover {
-  transform: scale(1.05);
 }
 
 .review-card__text {
@@ -154,4 +113,29 @@ body {
   text-align: right;
   color: var(--secondary-color);
   margin-top: 0.5rem;
+}
+
+/* Navbar Styling */
+nav {
+  padding: 1rem 2rem;
+  margin-bottom: 1rem;
+}
+
+.navbar div {
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Custom Card Adjustments */
+.custom-card {
+  min-height: 400px;
+}
+
+.custom-card .card-header {
+  text-align: left;
+  font-weight: bold;
+}
+
+.custom-card .card-content {
+  padding-top: 1rem;
 }
